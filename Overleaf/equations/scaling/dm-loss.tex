@@ -1,0 +1,5 @@
+\begin{equation}
+% \textstyle
+\label{eq:dm-loss}
+    \mathcal{L}_{t}^{1:N} = \frac{1}{t}\mathbb{E}_{q(\mathbf{x}_t|\mathbf{x}_0)}\left[-\sum_{n=1}^N\delta_{\mathbf{x}_t^n,\bm{m}}(\mathbf{x}_0^{n})^\top\log f_{\theta}(\mathbf{x}_t^{1:N})_n\right],
+\end{equation}

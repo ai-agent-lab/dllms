@@ -1,0 +1,33 @@
+Diffusion language models (DLLMs) have grown beyond simple text generation. When we regard specialized data—such as protein sequences, molecular graphs, or genomic DNA—as distinct “languages,” DLLMs demonstrate remarkable versatility across both scientific and multimodal fields.
+
+
+In \textbf{text-to-video} generation, researchers have successfully combined large language models with diffusion priors to generate videos base on the natural-language instructions. For example, in “The Best of Both Worlds: Integrating Language Models and Diffusion Models for Video Generation,” the authors show how prompt-conditioned diffusion transformers can generate successive frames that remain temporally consistent and closely aligned with the user’s text prompt \cite{yin_best_2025}.
+
+
+DLLMs have also been applied to \textbf{protein and molecule design}. In \textbf{DiffSDS}, protein backbone inpainting is formulated as a masked diffusion process over torsion angles.  This enables the model to complete structures accurately under defined geometric constraints \cite{gao_diffsds_2023}. DPLM‑2 employs two separate tokenizers—for amino‑acid sequences and structural motifs—and jointly denoises both representations to propose novel protein scaffolds \cite{wang_dplm-2_2024}. In the domain of small-molecule discovery, \textbf{Constrained Discrete Diffusion (CDD)} enforces chemical valence and substructure rules at every denoising iteration. The technique ensures that the generated compounds are both chemically valid and sufficiently novel for drug and materials research \cite{cardei_constrained_2025}.
+
+
+Beyond proteins, DLLMs have been extended to \textbf{genomic sequence modeling}. Simple and Effective Masked Diffusion Language Models (MDLM) is a new way to generate text by gradually filling in masked words. It trains an encoder-only model with a mix of classic masked language losses, then samples text in a few semi-autoregressive steps. On benchmarks like LM1B and OpenWebText, MDLM cuts diffusion model perplexity close to standard autoregressive methods. \cite{sahoo_simple_2024}.
+
+
+In \textbf{text summarization}, CrossMamba perform blockwise denoising over entire documents, achieving faster decoding speeds and better content preservation than typical autoregressive summarization on Gigaword andCNN/DailyMail datasets \cite{dat_discrete_2025}. Moreover, DLLM‑based classifiers can maintain an author’s original stance—particularly in political news—by applying preference‑guided denoising at inference time \cite{liu_p3sum_2024}.
+
+
+The applications extend into \textbf{robotics}. The HybridVLA model fuses diffusion‑generated action plans with autoregressive textual descriptions, enabling an embodied agent to both plan and verbally explain its actions in a coherent manner \cite{liu_hybridvla_2025}.
+
+
+For \textbf{privacy-sensitive inference}, the David helps Goliath framework partitions computation: a lightweight diffusion model operates locally on the user’s device and a remote expert model. The generation on the local diffusion model only defers to a remote expert model when necessary. In this way, user data remains confidential while the overall generative performance is preserved \cite{han_david_2024}.
+
+
+DLLMs have further been adapted for \textbf{seq2seq} tasks, such as machine translation and data‑to‑text conversion, through DiffuSeq’s parallel masked denoising pipeline \cite{gong_diffuseq_2023}. In \textbf{alignment-based editing},methods like DiffPO apply targeted denoising to achieve controlled sentiment or stylistic transformation in text \cite{chen_diffpo_2025}. There are even emerging models for \textbf{sign language production}, where sequences of gesture tokens are generated from textual input using discrete diffusion processes \cite{he_text-driven_2025}.
+
+
+By abstracting structured data as discrete languages, DLLMs unlock new possibilities in scientific discovery, multimedia creation, and human–machine interaction—showing that the same underlying principles can be tailored to a wide array of domains.
+
+
+
+% \bibliographystyle{plain}
+
+
+
+% \bibliography{DLLM}

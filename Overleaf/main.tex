@@ -1,0 +1,176 @@
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage[caption=false,font=footnotesize]{subfig}
+  
+\usepackage{ragged2e}
+\usepackage{caption}
+\captionsetup{justification=centering}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{array}
+% \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{forest}
+\usetikzlibrary{arrows.meta, shapes.geometric, positioning, fit, backgrounds}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}\usepackage{dsfont}
+% Algorithms
+%\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+% \usepackage{algorithmicx}
+\usepackage{academicons} % for ORCID icon
+\usepackage[table]{xcolor}     % to color the icon
+\definecolor{limegreen}{RGB}{50,205,50}
+\newcommand{\orcid}[1]{\href{https://orcid.org/#1}{\textcolor{limegreen}{\aiOrcid}}}
+\usepackage{hyperref}
+\usepackage{algpseudocode}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{bm}
+% \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\newcommand{\mask}{\texttt{[MASK]}}
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+% updated with editorial comments 8/9/2021
+
+\begin{document}
+
+\title{Diffusion-based Large Language Models Survey}
+
+\author{Chiung-Yi Tseng, Danyang Zhang, Junhao Song, Ziqian Bi% <-this % stops a space
+\thanks{Chiung-Yi Tseng and Danyang Zhang are with the AI Agent Lab, Vokram Group, London, United Kingdom (e-mails: ctseng@luxmuse.ai, danyang@vokram.com). Junhao Song is with the Department of Computing, Imperial College London, London, United Kingdom (email: junhao.song23@imperial.ac.uk). Ziqian Bi is with the Department of Computer Science, Purdue University, West Lafayette, Indiana, United States (email: bi32@purdue.edu).}% <-this % stops a space
+\thanks{Corresponding author: Junhao Song (junhao.song23@imperial.ac.uk)}
+}
+
+% \IEEEpubid{0000--0000/00\$00.00~\copyright~2021 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+\maketitle
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+Diffusion large language models, discrete denoising, large language models, latent diffusion, multimodal generation
+\end{IEEEkeywords}
+
+\section{Evolution of Diffusion Language Models}
+\label{sec:evolution}
+\input{sections/evolution}
+
+\section{Challenges in Diffusion-Based Text Models}
+\label{sec:challenges}
+\input{sections/challenges}
+
+
+\section{Categorization Criteria for Diffusion Language Models}
+\label{sec:categorization_methods}
+\input{sections/categorization}
+\input{tables/categorization}
+
+
+% Interporability
+\section{Interoperability between Autoregressive and Diffusion Models}
+\label{sec:interoperability}
+\input{sections/interporability}
+
+
+%%%
+% Knowledge transfer
+\section{Mutual Knowledge Transfer between Autoregressive and Diffusion Models}
+\label{sec:distillation}
+\input{sections/knowledge_transfer}
+
+
+
+% Collaboration
+\section{Collaboration between Diffusion-based and Autoregressive Models at Inference Time}
+\label{sec:collaboration}
+\input{sections/collaboration}
+
+
+
+
+
+\section{Inference Speed of Diffusion Language Models}
+\label{sec:inference_speed}
+\input{sections/inference_speed}
+
+\section{Impact of Sampling Techniques on Performance}
+\label{sec:sampling}
+\input{sections/sampling}
+%%%%
+
+
+\section{Fine-Tuning of Diffusion Language Models}
+\label{sec:finetuning}
+\input{sections/finetune}
+
+\section{Multimodality and Reasoning Capabilities of Diffusion Language Models}
+\label{sec:frontier}
+\input{sections/multi_modality_reasoning}
+
+
+
+\section{Evaluation of Diffusion Language Models}
+\label{sec:evaluation}
+\input{sections/evaluation}
+
+
+\section{Applications of Diffusion Language Models}
+\label{sec:applications}
+\input{sections/applications}
+
+
+
+
+\section{Future Research Directions}
+\label{sec:future}
+\input{sections/future_work}
+
+
+~\section{Conclusion}
+\label{sec:conclusion}
+\input{sections/conclusion}
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{DLLM.bib}
+
+
+\newpage
+ 
+% \vspace{11pt}
+
+% \bf{If you include a photo:}\vspace{-33pt}
+% \begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{fig1}}]{Michael Shell}
+% Use $\backslash${\tt{begin\{IEEEbiography\}}} and then for the 1st argument use $\backslash${\tt{includegraphics}} to declare and link the author photo.
+% Use the author name as the 3rd argument followed by the biography text.
+% \end{IEEEbiography}
+
+% \vspace{11pt}
+
+% \bf{If you will not include a photo:}\vspace{-33pt}
+% \begin{IEEEbiographynophoto}{John Doe}
+% Use $\backslash${\tt{begin\{IEEEbiographynophoto\}}} and the author name as the argument followed by the biography text.
+% \end{IEEEbiographynophoto}
+
+
+
+
+\vfill
+
+\end{document}
+
+

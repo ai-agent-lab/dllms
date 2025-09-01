@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="A comprehensive survey of diffusion-based large language models, exploring their evolution, applications, and future directions.">
+  <meta property="og:title" content="Diffusion-based Large Language Models Survey"/>
+  <meta property="og:description" content="Comprehensive survey covering DLLMs from foundational concepts to cutting-edge applications"/>
+  <meta property="og:url" content="https://www.techrxiv.org/users/952417/articles/1321784-diffusion-based-large-language-models-survey"/>
+  <meta property="og:image" content="static/images/banner.png" />
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="Diffusion-based Large Language Models Survey">
+  <meta name="twitter:description" content="Comprehensive survey of DLLMs: evolution, applications, and future directions">
+  <meta name="twitter:image" content="static/images/banner.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="keywords" content="Diffusion Models, Large Language Models, DLLMs, Text Generation, Survey, Machine Learning, NLP">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Diffusion-based Large Language Models Survey</title>
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Diffusion-based Large Language Models Survey</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="mailto:ctseng@luxmuse.ai" target="_blank">Chiung-Yi Tseng</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="mailto:danyang@vokram.com" target="_blank">Danyang Zhang</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="mailto:junhao.song23@imperial.ac.uk" target="_blank">Junhao Song</a><sup>2,†</sup>,
+              </span>
+              <span class="author-block">
+                <a href="mailto:bi32@purdue.edu" target="_blank">Ziqian Bi</a><sup>3</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>AI Agent Lab, Vokram Group, London, UK</span><br>
+              <span class="author-block"><sup>2</sup>Imperial College London, UK</span><br>
+              <span class="author-block"><sup>3</sup>Purdue University, USA</span><br>
+              <span class="eql-cntrb"><small><br><sup>†</sup>Corresponding Author</small></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- TechRxiv link -->
+                <span class="link-block">
+                  <a href="https://www.techrxiv.org/users/952417/articles/1321784-diffusion-based-large-language-models-survey" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- Github link -->
+                <span class="link-block">
+                  <a href="https://github.com/ai-agent-lab/Diffusion-based-Large-Language-Models-Survey" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- Dataset Link -->
+                <span class="link-block">
+                  <a href="#bibliography" 
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-book"></i>
+                  </span>
+                  <span>Bibliography</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Diffusion-based large language models (DLLMs) have emerged as a promising alternative to traditional autoregressive architectures, 
+              notably enhancing parallel generation, controllability, and robustness across multiple modalities. Originally developed from 
+              continuous diffusion methods in computer vision, recent adaptations of DLLMs have tailored discrete diffusion processes through 
+              absorbing-state kernels, latent projections, and hybrid architectures.
+            </p>
+            <p>
+              This survey reviews recent developments in DLLMs, beginning with their foundational concepts, including DDPM, DDIM, and their 
+              early discrete adaptations, such as mask-based, continuous-embedding, and hybrid models. We organize current methods by sampling 
+              strategy, guidance type, noise schedule, and temporal conditioning, and analyzes their efficiency, output quality, and fine-tuning.
+            </p>
+            <p>
+              The paper also highlights key advancements: autoregressive-diffusion unification through hyperschedules, adaptive correction 
+              sampling, and efficient caching mechanisms to enhance computational performance. Besides, it explores emerging applications, 
+              such as natural language tasks, multimodal generation, and reasoning-intensive domains. These demonstrate the versatility of DLLMs.
+            </p>
+            <p>
+              Furthermore, the paper identifies critical challenges, including adaptive sampling, scalable alignment strategies, deeper 
+              integration with pretrained language models, graph-based diffusion frameworks, and robust evaluation protocols. Finally, 
+              the paper proposes directions that could define future research in diffusion-based sequence generation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Contributions -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <h2 class="title is-3">Key Contributions</h2>
+          <div class="content">
+            <ul>
+              <li><strong>Comprehensive Taxonomy:</strong> We provide a systematic categorization of diffusion language models based on their architectural choices, training objectives, and sampling strategies.</li>
+              <li><strong>Evolution Analysis:</strong> We trace the development from continuous diffusion models to discrete variants specifically designed for text generation.</li>
+              <li><strong>Performance Evaluation:</strong> We analyze the trade-offs between different approaches in terms of generation quality, computational efficiency, and controllability.</li>
+              <li><strong>Future Directions:</strong> We identify promising research directions including adaptive sampling, scalable alignment, and integration with existing LLMs.</li>
+              <li><strong>Extensive Bibliography:</strong> We compile 87 key papers with verified links to help researchers navigate this rapidly evolving field.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper Sections Overview -->
+  <section class="section hero is-small is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Survey Structure</h2>
+      <div class="columns is-multiline">
+        <div class="column is-one-third">
+          <div class="box">
+            <h3 class="title is-5">Evolution & Foundations</h3>
+            <ul>
+              <li>Historical Development</li>
+              <li>Core Challenges</li>
+              <li>Categorization Methods</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="box">
+            <h3 class="title is-5">Technical Advances</h3>
+            <ul>
+              <li>Interoperability with AR Models</li>
+              <li>Knowledge Transfer</li>
+              <li>Inference Speed Optimization</li>
+            </ul>
+          </div>
+        </div>
+        <div class="column is-one-third">
+          <div class="box">
+            <h3 class="title is-5">Applications & Future</h3>
+            <ul>
+              <li>Multimodality & Reasoning</li>
+              <li>Evaluation Metrics</li>
+              <li>Future Research Directions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Figures -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3">Key Figures</h2>
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="columns is-multiline">
+            <div class="column is-half">
+              <figure class="image">
+                <img src="Overleaf/figs/diffusion.png" alt="Diffusion Process">
+                <p class="has-text-centered"><strong>Figure 1:</strong> The Diffusion Process in Language Models</p>
+              </figure>
+            </div>
+            <div class="column is-half">
+              <figure class="image">
+                <img src="Overleaf/figs/DLLMs_timeline.png" alt="Timeline">
+                <p class="has-text-centered"><strong>Figure 2:</strong> Evolution Timeline of DLLMs</p>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bibliography Section -->
+  <section class="section hero is-light" id="bibliography">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Bibliography</h2>
+      <p>This survey covers 87 key papers in the field of diffusion-based language models. Click on any paper title to access it directly.</p>
+      
+      <h3>Recent Advances (2025)</h3>
+      <div class="publication-list">
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2503.04482" target="_blank">Generalized Interpolating Discrete Diffusion</a>
+          </span>
+          <span class="publication-authors">Rütte et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2410.17891" target="_blank">Scaling Diffusion Language Models via Adaptation from Autoregressive Models</a>
+          </span>
+          <span class="publication-authors">Gong et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2502.09992" target="_blank">Large Language Diffusion Models</a>
+          </span>
+          <span class="publication-authors">Nie et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2503.04606" target="_blank">The Best of Both Worlds: Integrating Language Models and Diffusion Models for Video Generation</a>
+          </span>
+          <span class="publication-authors">Yin et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2410.21357" target="_blank">Energy-Based Diffusion Language Models for Text Generation</a>
+          </span>
+          <span class="publication-authors">Xu et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2503.23077" target="_blank">Efficient Inference for Large Reasoning Models: A Survey</a>
+          </span>
+          <span class="publication-authors">Liu et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2504.06416" target="_blank">Unifying Autoregressive and Diffusion-Based Sequence Generation</a>
+          </span>
+          <span class="publication-authors">Fathi et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2503.09573" target="_blank">Block Diffusion: Interpolating Between Autoregressive and Diffusion Language Models</a>
+          </span>
+          <span class="publication-authors">Arriola et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2502.13917" target="_blank">TESS 2: A Large-Scale Generalist Diffusion Language Model</a>
+          </span>
+          <span class="publication-authors">Tae et al., 2025</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2504.12216" target="_blank">d1: Scaling Reasoning in Diffusion Large Language Models via Reinforcement Learning</a>
+          </span>
+          <span class="publication-authors">Zhao et al., 2025</span>
+        </div>
+      </div>
+
+      <h3>Key Papers (2024)</h3>
+      <div class="publication-list">
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10909201/" target="_blank">Diffusion models in text generation: a survey</a>
+          </span>
+          <span class="publication-authors">Yi et al., 2024</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2402.07754" target="_blank">Diffusion of Thoughts: Chain-of-Thought Reasoning in Diffusion Language Models</a>
+          </span>
+          <span class="publication-authors">Ye et al., 2024</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2310.16834" target="_blank">Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution</a>
+          </span>
+          <span class="publication-authors">Lou et al., 2024</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2406.07524" target="_blank">Simple and Effective Masked Diffusion Language Models</a>
+          </span>
+          <span class="publication-authors">Sahoo et al., 2024</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2311.13231" target="_blank">Using Human Feedback to Fine-tune Diffusion Models without Any Reward Model</a>
+          </span>
+          <span class="publication-authors">Yang et al., 2024</span>
+        </div>
+      </div>
+
+      <h3>Foundational Papers</h3>
+      <div class="publication-list">
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/1503.03585" target="_blank">Deep Unsupervised Learning using Nonequilibrium Thermodynamics</a>
+          </span>
+          <span class="publication-authors">Sohl-Dickstein et al., 2015</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2006.11239" target="_blank">Denoising Diffusion Probabilistic Models</a>
+          </span>
+          <span class="publication-authors">Ho et al., 2020</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2205.14217" target="_blank">Diffusion-LM Improves Controllable Text Generation</a>
+          </span>
+          <span class="publication-authors">Li et al., 2022</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2210.08933" target="_blank">DiffuSeq: Sequence to Sequence Text Generation with Diffusion Models</a>
+          </span>
+          <span class="publication-authors">Gong et al., 2023</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2305.18619" target="_blank">Likelihood-Based Diffusion Language Models</a>
+          </span>
+          <span class="publication-authors">Gulrajani & Hashimoto, 2023</span>
+        </div>
+      </div>
+
+      <h3>Survey Papers</h3>
+      <div class="publication-list">
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2305.14671" target="_blank">A Survey of Diffusion Models in Natural Language Processing</a>
+          </span>
+          <span class="publication-authors">Zou et al., 2023</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2303.07576" target="_blank">Diffusion Models in NLP: A Survey</a>
+          </span>
+          <span class="publication-authors">Zhu & Zhao, 2023</span>
+        </div>
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2209.00796" target="_blank">Diffusion Models: A Comprehensive Survey of Methods and Applications</a>
+          </span>
+          <span class="publication-authors">Yang et al., 2024</span>
+        </div>
+      </div>
+
+      <h3>Complete Bibliography - All Papers</h3>
+      
+      <!-- 2025 Papers -->
+      <h4>2025</h4>
+      <div class="publication-list">
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2503.04482" target="_blank">Generalized Interpolating Discrete Diffusion</a>
+            <a href="http://arxiv.org/abs/2503.04482" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Rütte et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2410.17891" target="_blank">Scaling Diffusion Language Models via Adaptation from Autoregressive Models</a>
+            <a href="http://arxiv.org/abs/2410.17891" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Gong et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2502.09992" target="_blank">Large Language Diffusion Models</a>
+            <a href="http://arxiv.org/abs/2502.09992" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Nie et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2411.06438" target="_blank">Conditional [MASK] Discrete Diffusion Language Model</a>
+            <a href="http://arxiv.org/abs/2411.06438" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Koh et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2410.21357" target="_blank">Energy-Based Diffusion Language Models for Text Generation</a>
+            <a href="http://arxiv.org/abs/2410.21357" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Xu et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2503.23077" target="_blank">Efficient Inference for Large Reasoning Models: A Survey</a>
+            <a href="http://arxiv.org/abs/2503.23077" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Liu et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2504.06416" target="_blank">Unifying Autoregressive and Diffusion-Based Sequence Generation</a>
+            <a href="http://arxiv.org/abs/2504.06416" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Fathi, Scholak & Noël, 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2503.04606" target="_blank">The Best of Both Worlds: Integrating Language Models and Diffusion Models for Video Generation</a>
+            <a href="http://arxiv.org/abs/2503.04606" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Yin et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2502.13917" target="_blank">TESS 2: A Large-Scale Generalist Diffusion Language Model</a>
+            <a href="http://arxiv.org/abs/2502.13917" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Tae et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2503.09573" target="_blank">Block Diffusion: Interpolating Between Autoregressive and Diffusion Language Models</a>
+            <a href="http://arxiv.org/abs/2503.09573" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Arriola et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2504.12216" target="_blank">d1: Scaling Reasoning in Diffusion Large Language Models via Reinforcement Learning</a>
+            <a href="http://arxiv.org/abs/2504.12216" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Zhao et al., 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://deepmind.google/models/gemini-diffusion/" target="_blank">Gemini Diffusion</a>
+            <a href="https://deepmind.google/models/gemini-diffusion/" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Google DeepMind, 2025</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2506.17298" target="_blank">Mercury: Ultra-Fast Language Models Based on Diffusion</a>
+            <a href="https://arxiv.org/abs/2506.17298" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Khanna et al., 2025</span>
+        </div>
+
+      </div>
+
+      <!-- 2024 Papers -->
+      <h4>2024</h4>
+      <div class="publication-list">
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10909201/" target="_blank">Diffusion models in text generation: a survey</a>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10909201/" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Yi et al., 2024</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2402.07754" target="_blank">Diffusion of Thoughts: Chain-of-Thought Reasoning in Diffusion Language Models</a>
+            <a href="http://arxiv.org/abs/2402.07754" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Ye et al., 2024</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2310.16834" target="_blank">Discrete Diffusion Modeling by Estimating the Ratios of the Data Distribution</a>
+            <a href="http://arxiv.org/abs/2310.16834" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Lou, Meng & Ermon, 2024</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2406.07524" target="_blank">Simple and Effective Masked Diffusion Language Models</a>
+            <a href="http://arxiv.org/abs/2406.07524" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Sahoo et al., 2024</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2306.02531" target="_blank">PLANNER: Generating Diversified Paragraph via Latent Language Diffusion Model</a>
+            <a href="http://arxiv.org/abs/2306.02531" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Zhang et al., 2024</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2410.13782" target="_blank">DPLM-2: A Multimodal Diffusion Protein Language Model</a>
+            <a href="http://arxiv.org/abs/2410.13782" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Wang et al., 2024</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2209.00796" target="_blank">Diffusion Models: A Comprehensive Survey of Methods and Applications</a>
+            <a href="http://arxiv.org/abs/2209.00796" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Yang et al., 2024</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2305.14771" target="_blank">David helps Goliath: Inference-Time Collaboration Between Small Specialized and Large General Diffusion LMs</a>
+            <a href="http://arxiv.org/abs/2305.14771" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Han et al., 2024</span>
+        </div>
+
+      </div>
+
+      <!-- 2023 Papers -->
+      <h4>2023</h4>
+      <div class="publication-list">
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2210.08933" target="_blank">DiffuSeq: Sequence to Sequence Text Generation with Diffusion Models</a>
+            <a href="http://arxiv.org/abs/2210.08933" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Gong et al., 2023</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2305.18619" target="_blank">Likelihood-Based Diffusion Language Models</a>
+            <a href="http://arxiv.org/abs/2305.18619" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Gulrajani & Hashimoto, 2023</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2305.10855" target="_blank">TextDiffuser: Diffusion Models as Text Painters</a>
+            <a href="http://arxiv.org/abs/2305.10855" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Chen et al., 2023</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2210.17432" target="_blank">SSD-LM: Semi-autoregressive Simplex-based Diffusion Language Model for Text Generation and Modular Control</a>
+            <a href="http://arxiv.org/abs/2210.17432" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Han, Kumar & Tsvetkov, 2023</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2305.09515" target="_blank">AR-Diffusion: Auto-Regressive Diffusion Model for Text Generation</a>
+            <a href="http://arxiv.org/abs/2305.09515" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Wu et al., 2023</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2305.14671" target="_blank">A Survey of Diffusion Models in Natural Language Processing</a>
+            <a href="http://arxiv.org/abs/2305.14671" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Zou, Kim & Kang, 2023</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="http://arxiv.org/abs/2303.07576" target="_blank">Diffusion Models in NLP: A Survey</a>
+            <a href="http://arxiv.org/abs/2303.07576" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Zhu & Zhao, 2023</span>
+        </div>
+
+      </div>
+
+      <!-- Foundational Papers -->
+      <h4>Foundational Papers</h4>
+      <div class="publication-list">
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2205.14217" target="_blank">Diffusion-LM Improves Controllable Text Generation</a>
+            <a href="https://arxiv.org/abs/2205.14217" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Li et al., 2022</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2006.11239" target="_blank">Denoising Diffusion Probabilistic Models</a>
+            <a href="https://arxiv.org/abs/2006.11239" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Ho, Jain & Abbeel, 2020</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/2010.02502" target="_blank">Denoising Diffusion Implicit Models</a>
+            <a href="https://arxiv.org/abs/2010.02502" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Song, Meng & Ermon, 2021</span>
+        </div>
+
+        <div class="publication-item">
+          <span class="publication-title">
+            <a href="https://arxiv.org/abs/1503.03585" target="_blank">Deep Unsupervised Learning using Nonequilibrium Thermodynamics</a>
+            <a href="https://arxiv.org/abs/1503.03585" target="_blank" class="link-icon">
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </span>
+          <span class="publication-authors">Sohl-Dickstein et al., 2015</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@article{tseng2025diffusion,
+  title={Diffusion-based Large Language Models Survey},
+  author={Tseng, Chiung-Yi and Zhang, Danyang and Song, Junhao and Bi, Ziqian},
+  journal={TechRxiv},
+  year={2025},
+  url={https://www.techrxiv.org/users/952417/articles/1321784-diffusion-based-large-language-models-survey}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+              This webpage template was borrowed from <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

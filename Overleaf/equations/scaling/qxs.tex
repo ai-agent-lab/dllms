@@ -1,0 +1,8 @@
+\begin{align}
+\label{eq:qxs}
+    q(\bm{x}_s|\bm{x}_t, \bm{x}_0) &= \frac{q(\bm{x}_t|\bm{x}_s)q(\bm{x}_s|\bm{x}_0)}{q(\bm{x}_t|\bm{x}_0)} \nonumber \\
+    &= \begin{cases}
+        \frac{\alpha_s-\alpha_t}{1-\alpha_t}\bm{x}_0+\frac{1-\alpha_s}{1-\alpha_t}\bm{m} & \text{if } \bm{x}_t=\bm{m}, \\
+        \bm{x}_0 & \text{if }\bm{x}_t\neq\bm{m}.
+    \end{cases}
+\end{align}

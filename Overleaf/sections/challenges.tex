@@ -1,0 +1,18 @@
+DLLMs have great potential for parallelism and controllability but they also face several challenges when compared to autoregressive (AR) models. First, \textbf{inference latency} remains a significant hurdle: diffusion models often require dozens to hundreds of iterative denoising steps to produce coherent text. This causes much slower wall-clock inference times than the single-pass token sampling of AR decoders \cite{arriola_block_2025, zheng_reparameterized_2024}.
+
+Another limitation is the \textbf{rigidity of sequence length}. Many early discrete diffusion schemes assume a fixed sequence length, making variable-length or open-ended text generation difficult without additional padding, masking strategies, or complex length prediction mechanisms \cite{arriola_block_2025, rutte_generalized_2025}.
+
+In terms of modeling performance, diffusion-based approaches frequently underperform AR models on standard language-modeling benchmarks. This \textbf{weaker likelihood performance} arises from challenges in capturing sharp, multimodal discrete token distributions through gradual denoising processes \cite{arriola_block_2025, xu_energy-based_2025}.
+
+Furthermore, diffusion methods can struggle with \textbf{global coherence}, as noise is often injected uniformly or blockwise across tokens. This limits the model’s ability to condition on long-range dependencies as effectively as full-attention AR decoders \cite{fathi_unifying_2025, arriola_block_2025}.
+
+Integrating user preferences and control signals imposes additional costs: \textbf{alignment and controllability} techniques such as DiffPO require extra inference-time denoising or optimization steps to steer outputs toward desired attributes, further exacerbating latency issues \cite{chen_diffpo_2025}.
+
+Mapping discrete text into a continuous diffusion framework introduces \textbf{encoding and reconstruction complexity}. Architectures like TEncDM rely on large projector networks to compress and reconstruct token embeddings, which can introduce errors and complicate training dynamics \cite{shabalin_tencdm_2025}.
+
+Basic diffusion schemes also suffer from a lack of \textbf{self-correction}: once a token is denoised, early mistakes cannot be revisited without rerunning the entire process. \textbf{Generalized Interpolating Discrete Diffusion (GIDD)} addresses this by adding fixed-point resampling iterations, but at the cost of additional computation \cite{rutte_generalized_2025}.
+
+Finally, hybrid architectures that combine AR and diffusion components—such as blockwise interpolation or hyperschedules—introduce significant \textbf{engineering complexity}. Coordinating two sampling paradigms, tuning noise schedules, and balancing error propagation across modules can dramatically increase implementation and inference overhead \cite{arriola_block_2025, fathi_unifying_2025}.
+
+% \bibliographystyle{plain}
+% \bibliography{DLLM}

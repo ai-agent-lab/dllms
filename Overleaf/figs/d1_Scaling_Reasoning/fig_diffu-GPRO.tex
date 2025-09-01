@@ -1,0 +1,12 @@
+\begin{figure*}[h!]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figs/d1_Scaling Reasoning/diffu-grpo.png}
+    \caption[Adaptation of AR models to diffusion models]{%
+        The overview of Gong et al.'s~\cite{gong_scaling_2025} approach to adapt autoregressive (AR) models to diffusion models. 
+        \textbf{Left}: The shift operation in AR models enables the output layer $h_i$ to approximate the distribution of next tokens $x_{i+1}$ in hidden representations through the cross entropy (CE) loss. 
+        \textbf{Middle}: Removing the causal mask gradually during training eventually making the model bi-directional. 
+        \textbf{Right}: Inside the diffusion models, shifting the logits to compute the loss with the next token (i.e., the loss on $h_i$ would be with respect to $x_{i+1}$), while perceptually, the diffusion models are still functioning as recovering the original signals (since $h_i$ corresponds to $x_{i+1}$ in AR loss).%
+    }
+    \label{fig:diffu-GRPO}
+\end{figure*}
+

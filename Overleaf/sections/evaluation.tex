@@ -1,0 +1,34 @@
+Evaluating diffusion language models (DLLMs) requires metrics that capture both generative quality and the distinctive inference characteristics of diffusion processes. We discuss common benchmarks and their limitations when applied to DLLMs.
+
+
+
+\noindent\textbf{Language modeling.}  To compare token prediction accuracy with autoregressive (AR) baselines, DLLMs often report perplexity on datasets like WikiText-103 and Penn Treebank.  For example, Block Diffusion and Reparameterized discrete models approach AR perplexity after sufficient training steps \cite{arriola_block_2025, zheng_reparameterized_2024}.  However, perplexity assumes a left-to-right factorization and ignores DLLM’s parallel sampling and iterative refinement. This potentially underestimates diffusion models optimized for inference speed.  Complementary metrics such as BERTScore have been proposed to evaluate contextual similarity beyond token-level likelihood \cite{zhang_bertscore_2019}, yet these do not reflect generation latency.
+
+
+
+\noindent\textbf{Sequence-to-sequence tasks.}  Machine translation and summarization evaluations use BLEU and ROUGE scores on WMT and CNN/DailyMail benchmarks \cite{papineni_bleu_2002, lin_rouge_2004}.  Discrete Diffusion for Summarization achieves ROUGE comparable to AR systems with fewer denoising steps \cite{dat_discrete_2025}. Besides, COMET provides a learned evaluation that correlates better with human judgments on translation \cite{rei_comet_2020}.  Diversity metrics such as distinct-n and Self-BLEU quantify the variety of generated outputs, which is important for diffusion modelsparallel proposals \cite{li_diversity_2016}.
+
+
+
+\noindent\textbf{Open-ended generation.}  Distributional metrics such as MAUVE measure the divergence between model and human text distributions \cite{pillutla_mauve_2021}. Meanwhile, diversity measures (distinct-1/2) assess intra-sample variety.  MAUVE better reflects human preference than perplexity, but it overlooks diffusion’s multi-step denoising trajectories and interactive editing capabilities.  Human evaluations, preferences or side-by-side comparisons, are still essential yet are infrequent due to cost.
+
+
+
+\noindent\textbf{Reasoning and instruction following.}  Benchmarks, such as GSM8K, CommonsenseQA, and StrategyQA assess multi-step and commonsense reasoning.  Instruction-fine-tuned DLLMs demonstrate zero-shot performance on unseen tasks, matching AR LLMs in reasoning accuracy \cite{zhao_d1_2025}. BigBench Hard tasks reveal areas where diffusion planning may excel \cite{srivastava_bigbench_2022}.  However, some reasoning benchmarks focus on final answers and ignore DLLM’s intermediate planning and self-correction behaviors.
+
+
+
+\noindent\textbf{Multimodal and embodied tasks.}  Models such as HybridVLA are evaluated on VQA accuracy, COCO caption CIDEr, METEOR, and SPICE scores \cite{liu_hybridvla_2025, anderson_spice_2016}.  Although, these benchmarks test cross-modal alignment, they do not capture DLLM’s capacity for iterative visual refinement or privacy-preserving on-device drafts.
+
+
+
+\noindent\textbf{Robustness and calibration.}  Adversarial and stress tests—e.g.\ perturbed prompts or style shifts, measure model stability under input variation \cite{eger_robustness_2021}.  Calibration metrics such as expected calibration error (ECE) evaluate confidence alignment, relevant for diffusion’s energy-based sampling, however it is rarely reported \cite{guo_calibration_2017}.
+
+
+
+\noindent\textbf{Inference speed and efficiency.} Real-world evaluation should include wall-clock latency and throughput.  Self-Conditioned Discrete Diffusion (SEDD) matches AR latency at ~100 steps and attains 4–6× higher batch throughput by removing KV-cache dependencies \cite{lou_discrete_2024}.  Energy-based importance sampling reduces denoising iterations, achieving AR-level quality under the same time budget \cite{xu_energy-based_2025}.  Most DLLM works, however, still report only step counts rather than end-to-end latency metrics.
+
+
+
+While perplexity, BLEU/ROUGE, MAUVE, and other distributional or learned metrics offer useful baselines, they often underrepresent diffusion’s parallelism, controllability, and iterative refinement.  We advocate for \emph{latency-aware} benchmarks, \emph{intermediate-step quality tracking}, and \emph{interactive tasks} that leverage self-correction and multi-token proposals to fully characterize DLLM capabilities.
+

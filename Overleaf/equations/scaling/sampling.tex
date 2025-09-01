@@ -1,0 +1,21 @@
+
+\begin{algorithm}[H]
+\footnotesize
+\caption{Sampling (Reproduced from \cite{gong_scaling_2025})}
+\label{alg:sampling}
+\begin{algorithmic}[1]
+\State \textbf{Input:} Trained diffusion model $f_{\theta}$, sampling algorithm $\tau$, mask token $\bm{m}$, start token $\bm{s}$
+\State \textbf{Output:} generated sample $\bm{x}_0$
+\State \textbf{Initialize} $\bm{x}_T^{1:N} \gets \bm{m}$
+\For{$t = T,\dots,1$}
+    \State $\textit{logits} \gets f_{\theta}(\bm{x}_{t}^{1:N})$
+    \State $\tilde{\bm{x}}_0^{1:N} \sim \text{Categorical}(\tau(\textit{logits}))$
+    \For{$n = 1,\dots,N$}
+        \State $\bm{x}_{t-1}^n \gets q(\bm{x}_{t-1}^n \mid \bm{x}_t^n, \tilde{\bm{x}}_0^n)$ \Comment{Eq.~\ref{eq:qxs}}
+    \EndFor
+    \State Right shift $\bm{x}_{t-1}^{1:N} \gets [\bm{s}, \bm{x}_{t-1}^{1:N-1}]$ \label{algo:line-sample-shift}
+\EndFor
+\State \Return $\bm{x}_0^{2:N}$
+\end{algorithmic}
+\end{algorithm}
+
