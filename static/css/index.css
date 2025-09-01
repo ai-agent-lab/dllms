@@ -124,6 +124,16 @@ body {
 .results-carousel video {
   margin: 0;
 }
+.results-carousel img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+.results-carousel .item p {
+  font-size: 1rem;
+  margin-top: 10px;
+}
 
 .slider-pagination .slider-page {
   background: #000000;
