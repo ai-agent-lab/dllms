@@ -50,10 +50,10 @@ Furthermore, the paper identifies critical challenges, including adaptive sampli
 
 ## Key Figures
 
-![The Diffusion Process in Language Models](Overleaf/figs/diffusion.png)
+![The Diffusion Process in Language Models](static/images/diffusion.png)
 *Figure 1: The Diffusion Process in Language Models*
 
-![Evolution Timeline of DLLMs](Overleaf/figs/DLLMs_timeline.png)
+![Evolution Timeline of DLLMs](static/images/DLLMs_timeline.png)
 *Figure 2: Evolution Timeline of DLLMs*
 
 ## Bibliography
